@@ -1,0 +1,28 @@
+{
+    "parser": "babel-eslint",
+    "extends": "airbnb-base",
+    "plugins": [
+        "import"
+    ],
+    "rules": {
+      "no-console": "off",
+      "no-underscore-dangle": "off",
+      "prefer-template": "off",
+      "no-plusplus": "off",
+      "no-param-reassign": "off",
+      "class-methods-use-this": "off",
+      "max-len": "off",
+      "no-lonely-if": "off",
+      "no-unused-expressions": "off",
+      "no-unneeded-ternary": "off",
+      "arrow-body-style": "warn",
+      "no-restricted-syntax": "off"
+    },
+    "globals": {
+      "cc": true,
+      "window": true,
+      "WebSocket": true,
+      "XMLHttpRequest": true,
+      "document": true
+    }
+}
