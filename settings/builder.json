@@ -1,9 +1,7 @@
 {
   "appKey": "",
   "appSecret": "",
-  "excludeScenes": [
-    "2d2f792f-a40c-49bb-a189-ed176a246e49"
-  ],
+  "excludeScenes": [],
   "includeAnySDK": false,
   "includeSDKBox": false,
   "includeSdk": [
