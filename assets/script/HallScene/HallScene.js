@@ -1,18 +1,14 @@
-import { find } from 'lodash';
-import moment from 'moment';
-// import mobx from 'mobx';
+import audioMgr from '../audio-mgr';
 
 const { ccclass, property } = cc._decorator;
-@ccclass
-class StartScene extends cc.Component {
-  @property(cc.Node) testLogo = null;
-  isHallConnected = false;
-  isGameConnected = false;
-  isGoingToHall = false;
 
+@ccclass
+class HallScene extends cc.Component {
   //
   onLoad() {
     console.log('--start Scene ==');
+    const bgm = cc.url.raw('resources/audio/bgm.wav');
+    audioMgr.playMusic(bgm);
   }
 
   //
@@ -38,4 +34,4 @@ class StartScene extends cc.Component {
   }
 }
 
-export default StartScene;
+export default HallScene;

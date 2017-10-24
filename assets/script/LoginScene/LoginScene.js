@@ -1,6 +1,4 @@
-// import { find } from 'lodash';
-// import moment from 'moment';
-// import mobx from 'mobx';
+import cfg from '../config/cfg';
 
 const { ccclass, property } = cc._decorator;
 @ccclass
@@ -9,6 +7,7 @@ class LoginScene extends cc.Component {
 
   //
   onLoad() {
+    cfg.init();
     console.log('--Login Scene ==');
   }
 
