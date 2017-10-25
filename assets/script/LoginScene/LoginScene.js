@@ -1,4 +1,5 @@
 import cfg from '../config/cfg';
+import netMgr from '../net/net-mgr';
 
 const { ccclass, property } = cc._decorator;
 @ccclass
@@ -36,6 +37,12 @@ class LoginScene extends cc.Component {
   // 微信登录
   wxLogin() {
     console.log('wxlogin');
+    // netMgr.reqHttpSvr('loginHall', { nick: 'jtx', uid: '121312' }, (err, data) => {
+    //   console.log('==== back wxlogin ===');
+    //   console.log('err = ' + err);
+    //   console.log(data);
+    //   // console.log('data = ' + JSON.stringify(data));
+    // });
     cc.director.loadScene('Hall');
   }
 

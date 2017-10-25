@@ -25,7 +25,7 @@ Http.get = (url, cb, t) => {
   xhr.timeout = t || Http.defTimeout; // 毫秒
   xhr.ontimeout = (e) => {
     xhr.abort();
-    cb && cb('timeout');
+    cb && cb('timeout', { rstCode: -100 });
   };
 
   xhr.send();
@@ -48,13 +48,18 @@ Http.post = (url, params, cb, t) => {
   xhr.timeout = t || Http.defTimeout; // 毫秒
   xhr.ontimeout = (e) => {
     xhr.abort();
-    cb && cb('timeout');
+    cb && cb('timeout', { rstCode: -100 });
   };
 
   xhr.onreadystatechange = () => { // Call a function when the state changes.
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
       // Request finished. Do processing here.
-      cb && cb(null, xhr.responseText);
+      const data = xhr.responseText;
+      if (data.code === 0) {
+        cb && cb(null, data);
+      } else {
+        cb && cb('data error', data);
+      }
     }
   };
 

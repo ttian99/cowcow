@@ -5,6 +5,7 @@ const cfg = {
   svr_version: '未知',
   host: '', // 服务器host
   pf: 'web', // 平台
+  httpSvr: 'http://192.168.0.99:2082/LobbyServer/', // http服务器地址
 };
 
 cfg.HOST_CUSTOM = 'www.x8-qp.com'; // 客户服务器地址 (IP: 35.187.209.101)

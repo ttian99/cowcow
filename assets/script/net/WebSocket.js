@@ -1,4 +1,5 @@
 import protobuf from './protobuf';
+import protobufErr from './protobuf-err';
 import CMD from '../config/CMD';
 import Buffer from './Buffer';
 
@@ -96,16 +97,16 @@ class NetWork {
     if (!netPkg) return;
     const protocol = netPkg.readShort();
     if (protocol !== 999) console.debug('get: ' + protocol);
-    if (protocol === CMD.ERROR) {
-      const errProtocol = netPkg.readShort();
-      const errCode = protobuf[CMD.ERROR](netPkg);
-      console.debug('errProtocol = ' + errProtocol + ' , errCode = ' + errCode);
-      if (netWork.errBackfun[errProtocol]) {
-        netWork.errBackfun[errProtocol](errCode);
-      }
-    } else if (netWork.callBackfun[protocol]) {
+    const rstCode = protobuf[CMD.RST_CODE](netPkg);
+    console.log('rstCode = ' + rstCode);
+    if (rstCode === 0) {
+      console.error('==success==');
       const data = protobuf[protocol](netPkg);
-      netWork.callBackfun[protocol](data);
+      netWork.callBackfun[protocol] && netWork.callBackfun[protocol](data);
+    } else {
+      console.error('==error==');
+      const errData = protobufErr[protocol](netPkg);
+      netWork.errBackfun[protocol] && netWork.errBackfun[protocol](errData);
     }
   }
 
